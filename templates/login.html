@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block menu_index %}
+    <a class="navbar-brand" href="/">The Cat Gallery</a>
+{% endblock %}
+
+{% block menu_log %}
+    <a class="nav-link active" aria-current="page" href="/login">Log in</a>
+{% endblock %}
+
+{% block menu_upload %}
+<a class="nav-link" href="/upload">Upload</a>
+{% endblock %}
+
+{% block menu_about %}
+<a class="nav-link" href="/about">About Me</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="main-title" id="titlu-log">Log in</h1>
+        <form method="post" class="login-form">
+          {% if error_msg %}
+          <div style="color: red;">{{ error_msg }}</div>
+          {% endif %}
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

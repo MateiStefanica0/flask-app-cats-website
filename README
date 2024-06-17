@@ -1,0 +1,56 @@
+Username: a
+Parola: a
+
+- sunt mai multe credentiale folosite, dar pe acestea le-am folosit eu in
+timpul in care am lucrat la proiect ca sa fie mai usor
+
+HTML, Bootstrap, Jinja2, CSS:
+    - am folosit cod de pe site-ul oficial bootstrap pentru majoritatea
+    site-ului si am mai modificat eu putin in css
+    - am ales sa fac un site cu poze cu pisici
+    - am 4 categorii de pisici
+    - cineva poate sa posteze doar daca e logat
+    - am ales sa fac cate 2 versiuni pentru fiecare pagina, una pentru
+    utilizatorii neautentificati si una pentru cei autentificati, 
+    pentru ca sunt destul de multe diferente de continut intre pagini in
+    functie de acest criteriu si mi s-a parut mai usor de urmarit codul
+    asa
+    - astfel, am index, login, about, upload si logout, (*.html), fiecare
+    avand functii scrise in server
+    - desigur, am folosit si Jinja2, avand un template de baza din care toate
+    celelalte "mostenesc" elementele fixe de pe site (bara de meniu de ex)
+    - pe peginile de intex afisez dinamic pozele (pentru ca nu stiu exact cate
+    sunt in fiecare folder, deoarece utilizatorul poate adauga altele, deci
+    numarul e variabil); am facut asta cu un for care itereaza printr-o
+    variabila primita din server printr-un parametru al functiei de randare, 
+    prin care itereaza (voi detalia in plus la partea de server)
+    
+
+Server:
+    - am folosit si adaptat codul din laborator pentru login si logout, la fel 
+    si la functiile de randare a template-urilor
+    - la paginile de index, pentru fiecare categorie in parte am folosit
+    os.listdir pentru a obtine toate fisierele din folder, iar apoi le-am lasat
+    doar pe cele care sunt thumbnail-uri si le-am transmis ca parametrii catre
+    pagina html pentru a putea fi afisate
+    - la functiile de view_photo, care sunt apelate din paginile de index 
+    pentru a afisa pozele mai mari, primesc ca parametru numele fisierului, 
+    carui ii atasez inainte calea catre directorul unde e gasita (in functie
+    de categorie), apoi scot ".thumb" din nume si o afisez; practic, functia
+    primeste pisica.thump.jpg si afiseaza fisierul de la calea 
+    /static/angry/pisica.jpg
+    - pentru upload am folosit documentatia oficiala flask
+    - functia de upload, daca nu primeste o cerere de tip POST, afiseaza
+    upload_logged.html
+    - daca, insa, primeste o cerere de tip post, face urmatoarele lucruri
+        - extrage numele si categoria (aleasa de utilizator dintr-un 
+        dropdown list)
+        - daca numele e gol, returneaza o eroare
+        - verifica daca poza are una din extensiile permise folosind o functie
+        speciala pentru asta
+        - apeleaza functia secure_filename
+        - creeaza numele thumbnailului pe baza numelui pozei
+        - in functie de categorie, configureaza folderul de upload si salveaza
+        poza cu numele dat de utilizator
+        - apoi, folosind Pillow, creeaza thumbnailul si il salveaza in folder
+        alaturi de poza

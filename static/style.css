@@ -1,0 +1,54 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+    background-color: #f2ede4;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.mb-3 {
+    width: 350px;
+    text-align: center;
+}
+
+.container {
+    align-self: center;
+    align-items: center;
+}
+
+#upload-unlogged{
+    font-size:xx-large;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.form-select {
+    width: 350px;
+}
+
+.btn-no-padding {
+    padding: 0;
+}
+
+.btn-no-padding img {
+    border-radius: 0; /* Optionally, remove border-radius */
+}
+
+.display-4 {
+    padding: 50px;
+    margin: 30px;
+}
+
+.row-cols-3 {
+    padding: 20px;
+    margin: 2px
+}
+ .col-md-6 {
+    padding: 100px;
+ }
+
+  

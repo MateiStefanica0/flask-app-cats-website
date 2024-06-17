@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block menu_index %}
+    <a class="navbar-brand" href="/index_logged">The Cat Gallery</a>
+{% endblock %}
+
+{% block menu_log %}
+    <a class="nav-link active" aria-current="page" href="/logout">Log out</a>
+{% endblock %}
+
+{% block menu_upload %}
+    <a class="nav-link" href="/upload_logged">Upload</a>
+{% endblock %}
+
+{% block menu_about %}
+    <a class="nav-link" href="/about_logged">About Me</a>
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center mt-5" style="min-height: 80vh;">
+    <div class="col-md-6">
+        <h1 class="mb-4 text-center">Upload a cat photo!</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="file" class="form-label">Select a photo</label>
+                <input type="file" class="form-control" id="file" name="file">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" aria-label="Default select example">
+                    <option selected>Choose a category</option>
+                    <option value="1">Angry</option>
+                    <option value="2">Happy</option>
+                    <option value="3">Lazy</option>
+                    <option value="4">Sad</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

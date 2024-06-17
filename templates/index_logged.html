@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block menu_index %}
+    <a class="navbar-brand" href="/index_logged">The Cat Gallery</a>
+{% endblock %}
+
+{% block menu_log %}
+    <a class="nav-link active" aria-current="page" href="/logout">Log out</a>
+{% endblock %}
+
+{% block menu_upload %}
+    <a class="nav-link" href="/upload_logged">Upload</a>
+{% endblock %}
+
+{% block menu_about %}
+    <a class="nav-link" href="/about_logged">About Me</a>
+{% endblock %}
+
+{% block content %}
+   
+    <div class="container text-center mt-3">
+        <h1>Welcome to The Cat Gallery</h1>
+        <p>Here we have four categories of cats!</p>
+        <p>You can click on any thumbnail to view the whole cat image</p>
+        <p>If you are one of the admins, you can even upload your own can pictures</p>
+        <h3 class="display-4">Angry</h3>
+
+        <div class="row row-cols-3"> 
+            {% for file in files_angry %}
+                <div class="col-md-4">
+                    <div class="col">
+                        <a href="{{ url_for('view_photo_angry', filename=file) }}" class="btn btn-primary btn-no-padding">
+                            <img src="{{ url_for('static', filename='angry/' + file) }}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div> 
+    
+    <div class="container text-center mt-3">
+        <h3 class="display-4">Happy</h3>
+        <div class="row row-cols-3"> 
+            {% for file in files_happy %}
+                <div class="col-md-4">
+                    <div class="col">
+                        <a href="{{ url_for('view_photo_happy', filename=file) }}" class="btn btn-primary btn-no-padding">
+                            <img src="{{ url_for('static', filename='happy/' + file) }}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div> 
+
+    <div class="container text-center mt-3">
+        <h3 class="display-4">Lazy</h3>
+
+        <div class="row row-cols-3"> 
+            {% for file in files_lazy %}
+                <div class="col-md-4">
+                    <div class="col">
+                        <a href="{{ url_for('view_photo_lazy', filename=file) }}" class="btn btn-primary btn-no-padding">
+                            <img src="{{ url_for('static', filename='lazy/' + file) }}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div> 
+
+    <div class="container text-center mt-3">
+        <h3 class="display-4"> Sad</h3>
+
+        <div class="row row-cols-3"> 
+            {% for file in files_sad %}
+                <div class="col-md-4">
+                    <div class="col">
+                        <a href="{{ url_for('view_photo_sad', filename=file) }}" class="btn btn-primary btn-no-padding">
+                            <img src="{{ url_for('static', filename='sad/' + file) }}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    
+{% endblock %}
